@@ -17,14 +17,12 @@
     <junit-platform.version>5.3.1</junit-platform.version>
   </properties>
 
-  <repositories>
-    <repository>
-      <id>jitpack.io</id>
-      <url>https://jitpack.io</url>
-    </repository>
-  </repositories>
-
   <dependencies>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.2.3</version>
+    </dependency>
     <dependency>
       <groupId>org.jacoco</groupId>
       <artifactId>org.jacoco.agent</artifactId>
@@ -49,9 +47,9 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.discord4j.discord4j</groupId>
+      <groupId>com.discord4j</groupId>
       <artifactId>discord4j-core</artifactId>
-      <version>9026b53</version>
+      <version>3.0.6</version>
     </dependency>
   </dependencies>
 
