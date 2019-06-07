@@ -1,34 +1,25 @@
 package io.dja.arnold;
 
-import discord4j.core.DiscordClient;
-import discord4j.core.DiscordClientBuilder;
-import discord4j.core.event.domain.lifecycle.ReadyEvent;
-import discord4j.core.event.domain.message.MessageCreateEvent;
-import discord4j.core.object.entity.Message;
-import discord4j.core.object.entity.User;
+import org.javacord.api.DiscordApi;
+import org.javacord.api.DiscordApiBuilder;
 
 public class Bot {
 
   public static void main(String[] args) {
-    DiscordClientBuilder builder = new DiscordClientBuilder(args[0]);
-      DiscordClient client = builder.build();
+      // Insert your bot's token here
+      String token = args[0];
     
-      client.getEventDispatcher().on(ReadyEvent.class)
-              .subscribe(event -> {
-                  User self = event.getSelf();
-                  System.out.println(String.format("Logged in as %s#%s", self.getUsername(), self.getDiscriminator()));
-              });
+      DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
     
-      client.getEventDispatcher().on(MessageCreateEvent.class)
-              .map(MessageCreateEvent::getMessage)
-              .filter(message -> message.getAuthor().map(user -> !user.isBot()).orElse(false))
-              .filter(message -> message.getContent().orElse("").equalsIgnoreCase("!ping"))
-              .flatMap(Message::getChannel)
-              .flatMap(channel -> channel.createMessage("Pong!"))
-              .subscribe();
+      // Add a listener which answers with "Pong!" if someone writes "!ping"
+      api.addMessageCreateListener(event -> {
+          if (event.getMessageContent().equalsIgnoreCase("!ping")) {
+              event.getChannel().sendMessage("Pong!");
+          }
+      });
     
-    
-      client.login().block();
+      // Print the invite url of your bot
+      System.out.println("You can invite the bot by using the following url: " + api.createBotInvite());
   }
 
 }
