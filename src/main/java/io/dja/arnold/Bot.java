@@ -3,20 +3,27 @@ package io.dja.arnold;
 import io.dja.arnold.heartbeat.Ping;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
+import org.javacord.api.util.logging.FallbackLoggerConfiguration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Bot {
-
-  public static void main(String[] args) {
-      // Insert your bot's token here
-      String token = args[0];
     
-      DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
+    private static final Logger logger = LoggerFactory.getLogger(Bot.class);
     
-      // Add a listener which answers with "Pong!" if someone writes "!ping"
-      api.addMessageCreateListener(new Ping());
+    public static void main(String[] args) {
+        
+        FallbackLoggerConfiguration.setDebug(true);
+        FallbackLoggerConfiguration.setTrace(true);
+        
+        logger.info("Initializing DiscordApiBuilder");
+        DiscordApi api = new DiscordApiBuilder()
+                .setToken(args[0])
+                .login()
+                .join();
+        
+        logger.info("Initializing listeners");
+        api.addMessageCreateListener(new Ping());
+    }
     
-      // Print the invite url of your bot
-      System.out.println("You can invite the bot by using the following url: " + api.createBotInvite());
-  }
-
 }
