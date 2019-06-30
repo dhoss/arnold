@@ -18,7 +18,7 @@ public class Bot {
         
         logger.info("Initializing DiscordApiBuilder");
         DiscordApi api = new DiscordApiBuilder()
-                .setToken(args[0])
+                .setToken(System.getenv("DISCORD_API_TOKEN"))
                 .login()
                 .join();
         
