@@ -1,1 +1,1 @@
-worker: java -jar target/Bot-1.0-uber.jar
+worker: java $JAVA_OPTS -cp target/classes:target/dependency/* Bot
