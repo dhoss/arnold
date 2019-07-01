@@ -1,1 +1,1 @@
-worker: java -jar target/Bot-1.0-uber.jar
+worker: java -javaagent:/app/newrelic/newrelic.jar -jar target/Bot-1.0-uber.jar
