@@ -19,8 +19,8 @@ jobs:
           production: arnold-fitness-bot-prod
           api_key:
             secure: tWZ0YGE+0Xng9LGjSkA+FgOOF/f3IzoOnysspfOoUcIMMAViSXQTtIlpMc/Ov+k+6RC+8OGboLk4iPG1MD4cGeSKIe4RTEEjNRTxihV8O/e5xU20BZH1VlZRJcthXN5YUpsKDJM9b6N5dGrLBLi4/qosoNfVT0hMDQoPVu3q9HvKOeBDI6EByl0i6XThjeOFvgwXlpx/ZAIUmAZs0WC2/QOSjWtqsjV4rYI41iv+cX+V3nvJ6/x894BNf7nxlFQ/b8OKifFQw8Q/lfzmws4SYezp1bhjPtM6QLKR5hmJbsklxZpeTRUNSXw811N4t8NDzV0lwthpPFrVUpevuxWD5J5Z8+L94IWnt1xtyrENqXL5oa0Tvssry2hcEV2tN22M8zpIEmh7lFs78CjDRgTUUDBPn9NLVVjufPMZIhrQ6TbQ7bf31Gb26Y6jmbQ4n8w4DeU/6ED0RqZvJxC+GOfHS6rSWZqqBUkDEk36RGaQiElZZ0WArV2kacIsnWxvM0dzecGYp1uzvPDk7Z+nTbWxxEoEIi0W8DkaZqbCV7pVrejf3dCj/IU5+eVv4fBcNV5accdCpMvcWR4l7KqoAH+tr4f4InMF0+gnVEl/o2aAk56bACV/xRZn2hCX3oK63xaugKqZzSo7tFlUhNZTmuQ1VVROBVzi8B318VhQ339+lIw=
-    - stage: deploy to production
-      script: skip
-      deploy:
-        <<: *heroku
-        app: arnold-fitness-bot-prod
+   # - stage: deploy to production
+   #   script: skip
+   #   deploy:
+   #     <<: *heroku
+   #     app: arnold-fitness-bot-prod
