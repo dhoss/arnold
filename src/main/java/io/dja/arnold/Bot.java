@@ -1,6 +1,8 @@
 package io.dja.arnold;
 
-import io.dja.arnold.heartbeat.Ping;
+import io.dja.arnold.command.Help;
+import io.dja.arnold.command.heartbeat.Ping;
+import io.dja.arnold.command.registry.RegistryStore;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.util.logging.FallbackLoggerConfiguration;
@@ -24,6 +26,9 @@ public class Bot {
         
         logger.info("Initializing listeners");
         api.addMessageCreateListener(new Ping());
+        api.addMessageCreateListener(new Help());
+
+        logger.debug("Available commands: " + RegistryStore.availableCommands());
     }
     
 }

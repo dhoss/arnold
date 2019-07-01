@@ -1,0 +1,21 @@
+package io.dja.arnold.command.registry;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
+
+public class RegistryStore {
+
+    private static Map<String, String> commands = new ConcurrentHashMap<>();
+
+    public static void addCommand(String name, String description) {
+        commands.put(name, description);
+    }
+
+    public static String availableCommands() {
+        return commands.entrySet()
+                .stream()
+                .map(k -> k.getKey() + " -> " + k.getValue())
+                .collect(Collectors.joining("\n"));
+    }
+}
