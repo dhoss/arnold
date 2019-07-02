@@ -6,8 +6,10 @@ public abstract class BaseCommand {
 
     abstract public String name();
     abstract public String description();
-
-    public BaseCommand() {
-        RegistryStore.addCommand(name(), description());
+    
+    protected RegistryStore registryStore;
+    public BaseCommand(RegistryStore rs) {
+        this.registryStore = rs;
+        registryStore.addCommand(name(), description());
     }
 }

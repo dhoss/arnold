@@ -14,6 +14,8 @@ public class Bot {
     
     private static final Logger logger = LoggerFactory.getLogger(Bot.class);
     
+    private static final RegistryStore registryStore = new RegistryStore();
+    
     public static void main(String[] args) {
         Sentry.init();
         
@@ -27,10 +29,10 @@ public class Bot {
                 .join();
         
         logger.info("Initializing listeners");
-        api.addMessageCreateListener(new Ping());
-        api.addMessageCreateListener(new Help());
+        api.addMessageCreateListener(new Ping(registryStore));
+        api.addMessageCreateListener(new Help(registryStore));
 
-        logger.debug("Available commands: " + RegistryStore.availableCommands());
+        logger.debug("Available commands: " + registryStore.availableCommands());
     }
     
 }

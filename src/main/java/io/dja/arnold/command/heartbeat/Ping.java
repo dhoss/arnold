@@ -7,6 +7,10 @@ import org.javacord.api.listener.message.MessageCreateListener;
 
 public class Ping extends BaseCommand implements MessageCreateListener {
 
+    public Ping(RegistryStore rs) {
+        super(rs);
+    }
+    
     public String name() {
         return "!ping";
     }
@@ -14,10 +18,6 @@ public class Ping extends BaseCommand implements MessageCreateListener {
     public String description() {
         return "responds with " +
                 "\"Pong!\".  Used for checking if the bot is up.";
-    }
-
-    public Ping() {
-        super();
     }
 
     @Override

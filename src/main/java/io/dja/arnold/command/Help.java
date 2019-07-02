@@ -4,8 +4,14 @@ import io.dja.arnold.command.registry.RegistryStore;
 import org.javacord.api.event.message.MessageCreateEvent;
 import org.javacord.api.listener.message.MessageCreateListener;
 
-public class Help extends BaseCommand implements MessageCreateListener {
+import java.rmi.registry.Registry;
 
+public class Help extends BaseCommand implements MessageCreateListener {
+    
+    public Help(RegistryStore registryStore) {
+        super(registryStore);
+    }
+    
     public String name() {
         return "!help";
     }
@@ -18,7 +24,7 @@ public class Help extends BaseCommand implements MessageCreateListener {
     @Override
     public void onMessageCreate(MessageCreateEvent event) {
         if (event.getMessageContent().equalsIgnoreCase(name())) {
-            event.getChannel().sendMessage(RegistryStore.availableCommands());
+            event.getChannel().sendMessage(registryStore.availableCommands());
         }
     }
 }

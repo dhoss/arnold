@@ -6,13 +6,13 @@ import java.util.stream.Collectors;
 
 public class RegistryStore {
 
-    private static Map<String, String> commands = new ConcurrentHashMap<>();
+    private Map<String, String> commands = new ConcurrentHashMap<>();
 
-    public static void addCommand(String name, String description) {
+    public void addCommand(String name, String description) {
         commands.put(name, description);
     }
 
-    public static String availableCommands() {
+    public String availableCommands() {
         return commands.entrySet()
                 .stream()
                 .map(k -> String.format("%5s: %8s", k.getKey(), k.getValue()))
