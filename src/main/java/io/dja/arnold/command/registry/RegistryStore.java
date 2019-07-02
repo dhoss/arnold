@@ -15,7 +15,8 @@ public class RegistryStore {
     public static String availableCommands() {
         return commands.entrySet()
                 .stream()
-                .map(k -> k.getKey() + " -> " + k.getValue())
-                .collect(Collectors.joining("\n"));
+                .map(k -> String.format("%5s: %8s", k.getKey(), k.getValue()))
+                .collect(Collectors.joining("\n", "```\n", "\n```"));
     }
+
 }
