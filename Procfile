@@ -1,1 +1,1 @@
-worker: java -jar target/Bot-1.0-uber.jar
+worker: java $JVM_OPTS -jar target/Bot-1.0-uber.jar
