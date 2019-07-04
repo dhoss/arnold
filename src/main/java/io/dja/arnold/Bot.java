@@ -3,6 +3,7 @@ package io.dja.arnold;
 import io.dja.arnold.command.Help;
 import io.dja.arnold.command.heartbeat.Ping;
 import io.dja.arnold.command.registry.RegistryStore;
+import io.sentry.Sentry;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.util.logging.FallbackLoggerConfiguration;
@@ -14,6 +15,7 @@ public class Bot {
     private static final Logger logger = LoggerFactory.getLogger(Bot.class);
     
     public static void main(String[] args) {
+        Sentry.init();
         
         FallbackLoggerConfiguration.setDebug(true);
         FallbackLoggerConfiguration.setTrace(true);
