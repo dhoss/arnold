@@ -45,6 +45,8 @@ public class Bot {
         api.addMessageCreateListener(new Help(registryStore));
 
         logger.debug("Available commands: " + registryStore.availableCommands());
+        logger.debug("Application startup complete. Git hash: " +
+                System.getProperty("git.commit.id.abbrev"));
     }
     
 }
