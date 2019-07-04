@@ -136,7 +136,7 @@
                         An example would be: `${project.basedir}/../.git`
                         It seems reasonable to always add this configuration to have this set explicitly.
                     -->
-                    <dotGitDirectory> dhoss/arnold/.git</dotGitDirectory>
+                    <dotGitDirectory>${HOME}/build/dhoss/arnold/.git</dotGitDirectory>
 
                     <!--
                         Default (optional):
