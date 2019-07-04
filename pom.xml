@@ -21,7 +21,6 @@
         <mockito.version>2.28.2</mockito.version>
         <javacord.version>3.0.4</javacord.version>
         <logback.version>1.2.3</logback.version>
-        <jacoco.version>0.8.2</jacoco.version>
         <maven-surefire.version>2.22.2</maven-surefire.version>
         <jacoco.version>0.8.4</jacoco.version>
         <maven-dependency-plugin.version>3.0.1</maven-dependency-plugin.version>
@@ -716,19 +715,6 @@
                         <sourceDirectory>src/main/java</sourceDirectory>
                     </sourceDirectories>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.version}</version>
-                <executions>
-                    <execution>
-                        <id>prepare-agent</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
