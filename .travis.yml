@@ -5,6 +5,7 @@ script:
   - mvn clean test
 after_success:
   - mvn clean test jacoco:report coveralls:report
+  - echo "****** DIRECTORIES ${ls -la}"
 cache:
   directories:
     - $HOME/.m2
