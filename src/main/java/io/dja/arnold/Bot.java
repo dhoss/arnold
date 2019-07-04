@@ -4,6 +4,8 @@ import io.dja.arnold.command.Help;
 import io.dja.arnold.command.heartbeat.Ping;
 import io.dja.arnold.command.registry.RegistryStore;
 import io.sentry.Sentry;
+import io.sentry.event.BreadcrumbBuilder;
+import io.sentry.event.UserBuilder;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.util.logging.FallbackLoggerConfiguration;
@@ -18,6 +20,16 @@ public class Bot {
     
     public static void main(String[] args) {
         Sentry.init();
+    
+        Sentry.getContext().setUser(
+                new UserBuilder()
+                        .setUsername(System.getenv("APP_USER")).build());
+        Sentry.getContext().recordBreadcrumb(
+                new BreadcrumbBuilder()
+                        .setMessage("Starting application")
+                        .build());
+        Sentry.getContext().addTag("event", "startup");
+        Sentry.capture("startup");
         
         FallbackLoggerConfiguration.setDebug(true);
         FallbackLoggerConfiguration.setTrace(true);
