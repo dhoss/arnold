@@ -31,10 +31,16 @@
         <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
         <assertj.version>3.11.1</assertj.version>
         <maven-git-plugin.version>3.0.0</maven-git-plugin.version>
+        <maven-git-plugin.dotGitDirectory>build/dhoss/arnold/.git</maven-git-plugin.dotGitDirectory>
         <heroku-maven-plugin.version>2.0.8</heroku-maven-plugin.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>io.sentry</groupId>
+            <artifactId>sentry-logback</artifactId>
+            <version>${sentry.version}</version>
+        </dependency>
         <dependency>
             <groupId>pl.project13.maven</groupId>
             <artifactId>git-commit-id-plugin</artifactId>
@@ -100,6 +106,16 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
         <sourceDirectory>src/main/java</sourceDirectory>
         <testSourceDirectory>src/test/java</testSourceDirectory>
         <plugins>
@@ -155,7 +171,7 @@
                         An example would be: `${project.basedir}/../.git`
                         It seems reasonable to always add this configuration to have this set explicitly.
                     -->
-                    <dotGitDirectory>${HOME}/build/dhoss/arnold/.git</dotGitDirectory>
+                    <dotGitDirectory>${HOME}/${maven-git-plugin.dotGitDirectory}</dotGitDirectory>
 
                     <!--
                         Default (optional):
