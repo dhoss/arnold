@@ -1,21 +1,21 @@
 language: java
 jdk:
-  - openjdk11
+- openjdk11
 script:
-  - mvn clean test
+- mvn clean test
 after_success:
-  - mvn clean test jacoco:report coveralls:report
+- mvn clean test jacoco:report coveralls:report
+- mvn clean heroku:deploy-jar
 cache:
   directories:
-    - $HOME/.m2
-# TODO: figure out healthchecks
-deploy:
-  provider: heroku
-  skip_cleanup: true
-  api_key:
-    secure: tWZ0YGE+0Xng9LGjSkA+FgOOF/f3IzoOnysspfOoUcIMMAViSXQTtIlpMc/Ov+k+6RC+8OGboLk4iPG1MD4cGeSKIe4RTEEjNRTxihV8O/e5xU20BZH1VlZRJcthXN5YUpsKDJM9b6N5dGrLBLi4/qosoNfVT0hMDQoPVu3q9HvKOeBDI6EByl0i6XThjeOFvgwXlpx/ZAIUmAZs0WC2/QOSjWtqsjV4rYI41iv+cX+V3nvJ6/x894BNf7nxlFQ/b8OKifFQw8Q/lfzmws4SYezp1bhjPtM6QLKR5hmJbsklxZpeTRUNSXw811N4t8NDzV0lwthpPFrVUpevuxWD5J5Z8+L94IWnt1xtyrENqXL5oa0Tvssry2hcEV2tN22M8zpIEmh7lFs78CjDRgTUUDBPn9NLVVjufPMZIhrQ6TbQ7bf31Gb26Y6jmbQ4n8w4DeU/6ED0RqZvJxC+GOfHS6rSWZqqBUkDEk36RGaQiElZZ0WArV2kacIsnWxvM0dzecGYp1uzvPDk7Z+nTbWxxEoEIi0W8DkaZqbCV7pVrejf3dCj/IU5+eVv4fBcNV5accdCpMvcWR4l7KqoAH+tr4f4InMF0+gnVEl/o2aAk56bACV/xRZn2hCX3oK63xaugKqZzSo7tFlUhNZTmuQ1VVROBVzi8B318VhQ339+lIw=
-  strategy: git
-  run: "pwd && ls -la"
-  app:
-    master: arnold-fitness-bot-stage
-
+  - "$HOME/.m2"
+#deploy:
+#  provider: heroku
+#  skip_cleanup: true
+#  api_key:
+#    secure: tWZ0YGE+0Xng9LGjSkA+FgOOF/f3IzoOnysspfOoUcIMMAViSXQTtIlpMc/Ov+k+6RC+8OGboLk4iPG1MD4cGeSKIe4RTEEjNRTxihV8O/e5xU20BZH1VlZRJcthXN5YUpsKDJM9b6N5dGrLBLi4/qosoNfVT0hMDQoPVu3q9HvKOeBDI6EByl0i6XThjeOFvgwXlpx/ZAIUmAZs0WC2/QOSjWtqsjV4rYI41iv+cX+V3nvJ6/x894BNf7nxlFQ/b8OKifFQw8Q/lfzmws4SYezp1bhjPtM6QLKR5hmJbsklxZpeTRUNSXw811N4t8NDzV0lwthpPFrVUpevuxWD5J5Z8+L94IWnt1xtyrENqXL5oa0Tvssry2hcEV2tN22M8zpIEmh7lFs78CjDRgTUUDBPn9NLVVjufPMZIhrQ6TbQ7bf31Gb26Y6jmbQ4n8w4DeU/6ED0RqZvJxC+GOfHS6rSWZqqBUkDEk36RGaQiElZZ0WArV2kacIsnWxvM0dzecGYp1uzvPDk7Z+nTbWxxEoEIi0W8DkaZqbCV7pVrejf3dCj/IU5+eVv4fBcNV5accdCpMvcWR4l7KqoAH+tr4f4InMF0+gnVEl/o2aAk56bACV/xRZn2hCX3oK63xaugKqZzSo7tFlUhNZTmuQ1VVROBVzi8B318VhQ339+lIw=
+#  strategy: git
+#  app:
+#    master: arnold-fitness-bot-stage
+env:
+  secure: kfiEBVLMO/Ie8PSLUdHWcmxWDzKZRb+00Q1IPCbjRgu5GaEPTLWXYBrdPVaLX1FcJS8HVlDdB2g3rQUDm0ImyGHsusIcPZBRcBC0+RavHzmSqbgxElv9INylGsSdS+jRFPKOjaf35r9qbQ7ZCBxMCTMPM1QlZu7YwKPHYVSTqo4XcGRbO5xFXqBZRJt0a7VqKQHh6dcbdYSfu4HfpRh57vjR4/f+AqrbLIk+t4W4r907gJ6wcCnrXpoYyRLNyVGSJLiqTZJDaFJih1dj7UoARPXTyAAjpaXmXJauf/lByOIzRIzFVAcna0c8Q+2h6ogSYbMVQTnhO7kBSLA9oL1i7RITtf9esqS//99U5urnNnWBTmYfYolRehpGO1HwoPoZcMUFdr1QXCtA7TbjCbSsPtlA1DpRTyBtCntB7WKPLZchLWBHGzpOljf3Gnk1/ICBZ/PCm8rWSmXNmnJbXvZxYwMLg49jOm25Y8bFp24iyK8a9gV/Krk2+KinmxIWbk4Occm512N3OZdwM50ZH0HCbKRgcDDJZSlmTrZYk7t3+sXLNx1InheZV1VteQASy/8dUTlKZ4tZMDcGBYLWwakIP9PfhPklzT0G0JwPl+sIQZmZbW+27uyPrGxX/6F1+zdNNFXSKU4/7Jqs+zkKCtDgYfKx11wIKxoVFTeTHhcRV6U=
