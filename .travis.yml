@@ -5,7 +5,7 @@ script:
 - mvn clean test
 after_success:
 - mvn clean test jacoco:report coveralls:report
-- mvn clean heroku:deploy-jar
+- mvn clean heroku:deploy
 cache:
   directories:
   - "$HOME/.m2"
