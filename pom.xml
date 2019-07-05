@@ -108,6 +108,7 @@
                 <artifactId>heroku-maven-plugin</artifactId>
                 <version>${heroku-maven-plugin.version}</version>
                 <configuration>
+                    <appName>arnold-fitness-bot-stage</appName>
                     <includeTarget>false</includeTarget>
                     <includes>
                         <include>target/Bot-1.0-uber.jar</include>
