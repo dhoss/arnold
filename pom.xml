@@ -108,6 +108,9 @@
                 <artifactId>heroku-maven-plugin</artifactId>
                 <version>${heroku-maven-plugin.version}</version>
                 <configuration>
+                    <buildpacks>
+                        <buildpack>heroku/jvm</buildpack>
+                    </buildpacks>
                     <appName>arnold-fitness-bot-stage</appName>
                     <includeTarget>false</includeTarget>
                     <includes>
