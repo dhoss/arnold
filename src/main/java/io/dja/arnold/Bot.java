@@ -1,6 +1,7 @@
 package io.dja.arnold;
 
 import io.dja.arnold.command.Help;
+import io.dja.arnold.command.Lift;
 import io.dja.arnold.command.heartbeat.Ping;
 import io.dja.arnold.command.registry.RegistryStore;
 import io.sentry.Sentry;
@@ -43,6 +44,7 @@ public class Bot {
         // TODO: create a command factory
         api.addMessageCreateListener(new Ping(registryStore));
         api.addMessageCreateListener(new Help(registryStore));
+        api.addMessageCreateListener(new Lift(registryStore));
 
         logger.debug("Available commands: {}",
                 registryStore.availableCommands());

@@ -5,6 +5,7 @@ import io.dja.arnold.command.registry.RegistryStore;
 import org.javacord.api.event.message.MessageCreateEvent;
 import org.javacord.api.listener.message.MessageCreateListener;
 
+// TODO: rename this to heartbeat and have it answer to the !ping command
 public class Ping extends BaseCommand implements MessageCreateListener {
 
     public Ping(RegistryStore rs) {

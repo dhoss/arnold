@@ -4,10 +4,8 @@ import io.dja.arnold.command.registry.RegistryStore;
 import org.javacord.api.event.message.MessageCreateEvent;
 import org.javacord.api.listener.message.MessageCreateListener;
 
-import java.rmi.registry.Registry;
-
 public class Help extends BaseCommand implements MessageCreateListener {
-    
+
     public Help(RegistryStore registryStore) {
         super(registryStore);
     }
