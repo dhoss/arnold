@@ -12,7 +12,6 @@ public class Lift extends BaseCommand implements MessageCreateListener {
     public Lift(RegistryStore registryStore) {
         super(registryStore);
         this.options = new Options();
-        this.options.addOption("a", "")
     }
 
     public String name() {
@@ -28,9 +27,10 @@ public class Lift extends BaseCommand implements MessageCreateListener {
     public void onMessageCreate(MessageCreateEvent event) {
 
         String messageContent = event.getMessageContent();
-        if (messageContent.matches("\\!" + name() + "\\s\\w.+")) {
-            String liftInformation = messageContent.split("!add-lift")[1];
-            event.getChannel().sendMessage("Added lift: " + liftInformation);
+        if (messageContent.startsWith("!add-lift")) {
+            event.getChannel()
+                    .sendMessage("Adding lift for " +
+                            event.getMessageAuthor().getDisplayName());
         }
     }
 
